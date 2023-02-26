@@ -11,4 +11,6 @@
 #  updated_at :datetime         not null
 #
 class Actor < ApplicationRecord
+  hsa_many :characters
+  has_many :filmography, :thorugh => :characters, :source => :movie
 end
