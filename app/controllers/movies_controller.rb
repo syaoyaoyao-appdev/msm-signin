@@ -47,7 +47,7 @@ class MoviesController < ApplicationController
 
     if the_movie.valid?
       the_movie.save
-      redirect_to("/movies/#{the_movie.id}", { :notice => "Movie updated successfully."} )
+      redirect_to("/movies/#{the_movie.id}", { :notice => "Movie updated successfully." })
     else
       redirect_to("/movies/#{the_movie.id}", { :alert => the_movie.errors.full_messages.to_sentence })
     end
@@ -59,6 +59,10 @@ class MoviesController < ApplicationController
 
     the_movie.destroy
 
-    redirect_to("/movies", { :notice => "Movie deleted successfully."} )
+    redirect_to("/movies", { :notice => "Movie deleted successfully." })
+  end
+
+  def home_page
+    render({ :template => "movies/home.html.erb" })
   end
 end
