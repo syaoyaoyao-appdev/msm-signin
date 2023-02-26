@@ -1,6 +1,10 @@
 class BookmarksController < ApplicationController
   def index
-    matching_bookmarks = Bookmark.all
+    # matching_bookmarks = Bookmark.where(:user_id => session.fetch(:user_id))
+
+    @current_user = User.where({ :id => session[:user_id] }).at(0)
+
+    matching_bookmarks = @current_user.bookmarks
 
     @list_of_bookmarks = matching_bookmarks.order({ :created_at => :desc })
 
